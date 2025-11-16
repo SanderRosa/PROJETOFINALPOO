@@ -17,12 +17,35 @@ using std::getline;
 using std::stoi;
 using std::to_string;
 using std::exception;
+// Funções utilitárias locais (uso apenas dentro deste arquivo)
+static string lerString(const string& prompt) {
+    string valor;
+    std::cout << prompt;
+    std::getline(std::cin, valor);
+    return valor;
+}
 
-// Funções utilitárias do main.cpp (copiadas para cá para edição)
-string lerString(const string& prompt);
-int lerInteiro(const string& prompt);
+// Note: leitura de inteiros e outras interações com o usuário
+// são feitas em `main.cpp`. Mantemos aqui apenas helpers de string
+// que são usados internamente por `Estoque::editarItem`.
+
+// Construtor/Destrutor do Estoque
+Estoque::Estoque() {
+    // Ao criar o objeto, tenta carregar dados persistidos
+    carregarDados();
+}
+
+Estoque::~Estoque() {
+    // Salva dados antes de destruir
+    salvarDados();
+
+    // Libera a memória alocada para os itens
+    for (std::size_t i = 0; i < itens.tamanho(); ++i) {
+        delete itens.get(i);
+    }
+
     // Libera a memória alocada para o histórico
-    for (int i = 0; i < historico.tamanho(); ++i) {
+    for (std::size_t i = 0; i < historico.tamanho(); ++i) {
         delete historico.get(i);
     }
 }
@@ -34,7 +57,7 @@ void Estoque::adicionarItem(Item* item) {
 }
 
 Item* Estoque::buscarItemPorId(int id) {
-    for (int i = 0; i < itens.tamanho(); ++i) {
+    for (std::size_t i = 0; i < itens.tamanho(); ++i) {
         if (itens.get(i)->getId() == id) {
             return itens.get(i);
         }
@@ -43,7 +66,7 @@ Item* Estoque::buscarItemPorId(int id) {
 }
 
 Item* Estoque::buscarItemPorNome(const string& nome) {
-    for (int i = 0; i < itens.tamanho(); ++i) {
+    for (std::size_t i = 0; i < itens.tamanho(); ++i) {
         if (itens.get(i)->getNome() == nome) {
             return itens.get(i);
         }
@@ -52,7 +75,7 @@ Item* Estoque::buscarItemPorNome(const string& nome) {
 }
 
 void Estoque::removerItem(int id) {
-    for (int i = 0; i < itens.tamanho(); ++i) {
+    for (std::size_t i = 0; i < itens.tamanho(); ++i) {
         if (itens.get(i)->getId() == id) {
             delete itens.get(i); // Libera a memória
             itens.remover(i);    // Remove o ponteiro da lista
@@ -94,7 +117,7 @@ void Estoque::listarItens() const {
     // O polimorfismo acontece aqui!
     // A lista chama o método exibirDetalhes() correto
     // para ItemProduto ou ItemMateria.
-    for (int i = 0; i < itens.tamanho(); ++i) {
+    for (std::size_t i = 0; i < itens.tamanho(); ++i) {
         itens.get(i)->exibirDetalhes();
     }
 }
@@ -104,7 +127,7 @@ void Estoque::exibirHistorico() const {
         cout << "Nenhuma movimentacao no historico." << endl;
         return;
     }
-    for (int i = 0; i < historico.tamanho(); ++i) {
+    for (std::size_t i = 0; i < historico.tamanho(); ++i) {
         cout << historico.get(i)->gerarResumo() << endl;
     }
 }
@@ -137,7 +160,7 @@ void Estoque::salvarDados() const {
         return;
     }
 
-    for (int i = 0; i < itens.tamanho(); ++i) {
+    for (std::size_t i = 0; i < itens.tamanho(); ++i) {
         Item* item = itens.get(i);
         // Polimorfismo é usado aqui para obter o tipo e o detalhe
         arqItens << item->getTipo() << ";"
@@ -157,7 +180,7 @@ void Estoque::salvarDados() const {
         return;
     }
 
-    for (int i = 0; i < historico.tamanho(); ++i) {
+    for (std::size_t i = 0; i < historico.tamanho(); ++i) {
         MovimentoEstoque* mov = historico.get(i);
         arqMov << mov->getId() << ";"
                << mov->getData() << ";"

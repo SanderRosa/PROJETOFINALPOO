@@ -28,8 +28,8 @@ public:
      * @brief Remove um item de um índice específico.
      * @param indice O índice do item a ser removido.
      */
-    void remover(int indice) {
-        if (indice < 0 || indice >= elementos.size()) {
+    void remover(std::size_t indice) {
+        if (indice >= elementos.size()) {
             throw std::out_of_range("Indice fora do intervalo da lista.");
         }
         elementos.erase(elementos.begin() + indice);
@@ -40,8 +40,8 @@ public:
      * @param indice O índice do item a ser obtido.
      * @return O item no índice especificado.
      */
-    T get(int indice) const {
-        if (indice < 0 || indice >= elementos.size()) {
+    T get(std::size_t indice) const {
+        if (indice >= elementos.size()) {
             throw std::out_of_range("Indice fora do intervalo da lista.");
         }
         return elementos[indice];
@@ -51,7 +51,7 @@ public:
      * @brief Retorna o número de itens na lista.
      * @return O tamanho da lista.
      */
-    int tamanho() const {
+    std::size_t tamanho() const {
         return elementos.size();
     }
 };

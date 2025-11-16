@@ -103,7 +103,7 @@ int main() {
 
 int exibirMenu() {
     cout << "=================================" << endl;
-    cout << "   GESTOR DE ESTOQUE (Etapa 1)" << endl;
+    cout << "   MODULO ESTOQUE" << endl;
     cout << "=================================" << endl;
     cout << "1. Adicionar Item" << endl;
     cout << "2. Remover Item" << endl;
@@ -143,8 +143,11 @@ int lerInteiro(const string& prompt) {
     int valor;
     while (true) {
         cout << prompt;
-        cin >> valor;
-        if (cin.fail()) {
+        if (!(cin >> valor)) {
+            if (cin.eof()) {
+                cout << "Entrada interrompida (EOF). Saindo..." << endl;
+                std::exit(0);
+            }
             cin.clear(); // Limpa o estado de erro
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Descarta a entrada inválida
             cout << "Entrada invalida. Por favor, digite um numero." << endl;
@@ -158,7 +161,10 @@ int lerInteiro(const string& prompt) {
 string lerString(const string& prompt) {
     string valor;
     cout << prompt;
-    getline(cin, valor);
+    if (!std::getline(cin, valor)) {
+        cout << "Entrada interrompida (EOF). Saindo..." << endl;
+        std::exit(0);
+    }
     return valor;
 }
 
@@ -166,7 +172,10 @@ string lerStringNaoVazia(const string& prompt) {
     string valor;
     while (true) {
         cout << prompt;
-        getline(cin, valor);
+        if (!std::getline(cin, valor)) {
+            cout << "Entrada interrompida (EOF). Saindo..." << endl;
+            std::exit(0);
+        }
         if (valor.empty()) {
             cout << "Este campo nao pode ficar vazio." << endl;
         } else {
