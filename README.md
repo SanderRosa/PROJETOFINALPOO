@@ -50,6 +50,7 @@ Persistência de Dados: O sistema utiliza ifstream e ofstream (na classe Estoque
 
 📊 Diagrama de Classes
 O diagrama abaixo ilustra a arquitetura e o relacionamento entre as classes do módulo de estoque.
+https://github.com/SanderRosa/PROJETOFINALPOO/blob/main/Diagrama%20de%20Classes%20-%20Modulo%20Estoque.png?raw=true
 
 ⚙️ Como Compilar e Executar
 O projeto é escrito em C++ padrão e pode ser compilado com qualquer compilador moderno (como g++ ou Clang).
