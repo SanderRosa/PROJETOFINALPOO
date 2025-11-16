@@ -14,14 +14,12 @@ private:
 
 public:
     /**
-     * @brief Construtor que recebe a mensagem de erro.
-     * @param msg A mensagem de erro.
+     * Construtor com mensagem de erro.
      */
     EstoqueException(const std::string& msg) : mensagem(msg) {}
 
     /**
-     * @brief Sobrescreve o método what() da classe std::exception.
-     * @return A mensagem de erro como uma string C.
+     * Sobrescreve what() da std::exception.
      */
     virtual const char* what() const noexcept override {
         return mensagem.c_str();

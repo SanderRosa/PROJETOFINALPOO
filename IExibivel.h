@@ -8,13 +8,12 @@
 class IExibivel {
 public:
     /**
-     * @brief Destrutor virtual padrão. Essencial para classes base com funções virtuais.
+     * Destrutor virtual (essencial para classes base com funções virtuais).
      */
     virtual ~IExibivel() {}
 
     /**
-     * @brief Função virtual pura para exibir os detalhes de um objeto.
-     * As classes filhas deverão implementar este método.
+     * Função virtual pura para exibir detalhes (implementar nas filhas).
      */
     virtual void exibirDetalhes() const = 0;
 };

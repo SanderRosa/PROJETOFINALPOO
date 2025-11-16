@@ -23,12 +23,12 @@ protected:
 
 public:
     /**
-     * @brief Construtor da classe Item.
+     * Construtor da classe Item.
      */
     Item(const std::string& nome, const std::string& desc, int qtd, const std::string& link);
 
     /**
-     * @brief Destrutor virtual.
+     * Destrutor virtual.
      */
     virtual ~Item() {}
 
@@ -44,7 +44,7 @@ public:
     void removerQtd(int qtd);
 
     /**
-     * @brief Atualiza os dados básicos do item.
+     * Atualiza os dados básicos do item.
      */
     void atualizarDados(const std::string& novoNome, const std::string& novaDesc, const std::string& novoLink);
 
@@ -52,20 +52,17 @@ public:
     // Usados para polimorfismo (ex. ao salvar em arquivo)
 
     /**
-     * @brief Retorna o tipo do item ("PRODUTO" ou "MATERIA").
-     * @return O tipo do item como string.
+     * Retorna o tipo do item ("PRODUTO" ou "MATERIA").
      */
     virtual std::string getTipo() const = 0;
 
     /**
-     * @brief Retorna o detalhe específico da classe filha (categoria ou fornecedor).
-     * @return O detalhe específico como string.
+     * Retorna o detalhe específico da classe filha (categoria ou fornecedor).
      */
     virtual std::string getDetalheEspecifico() const = 0;
 
     /**
-     * @brief Define o próximo ID a ser usado, geralmente ao carregar dados.
-     * @param id O novo valor para proximoId.
+     * Define o próximo ID a ser usado ao carregar dados.
      */
     static void setProximoId(int id);
 };

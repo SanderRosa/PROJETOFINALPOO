@@ -12,14 +12,12 @@ private:
     std::string categoriaProduto;
 
 public:
-    /**
-     * @brief Construtor do ItemProduto.
+    /**     * Construtor do ItemProduto.
      */
     ItemProduto(const std::string& nome, const std::string& desc, int qtd, const std::string& link, const std::string& categoria);
 
     /**
-     * @brief Sobrescreve o método para exibir detalhes.
-     * Demonstra polimorfismo.
+     * Sobrescreve o método para exibir detalhes (polimorfismo).
      */
     virtual void exibirDetalhes() const override;
 

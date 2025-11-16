@@ -17,16 +17,14 @@ private:
 
 public:
     /**
-     * @brief Adiciona um item ao final da lista.
-     * @param item O item a ser adicionado.
+     * Adiciona um item ao final da lista.
      */
     void adicionar(T item) {
         elementos.push_back(item);
     }
 
     /**
-     * @brief Remove um item de um índice específico.
-     * @param indice O índice do item a ser removido.
+     * Remove um item de um índice específico.
      */
     void remover(std::size_t indice) {
         if (indice >= elementos.size()) {
@@ -36,9 +34,7 @@ public:
     }
 
     /**
-     * @brief Obtém um item de um índice específico.
-     * @param indice O índice do item a ser obtido.
-     * @return O item no índice especificado.
+     * Obtém um item de um índice específico.
      */
     T get(std::size_t indice) const {
         if (indice >= elementos.size()) {
@@ -48,8 +44,7 @@ public:
     }
 
     /**
-     * @brief Retorna o número de itens na lista.
-     * @return O tamanho da lista.
+     * Retorna o número de itens na lista.
      */
     std::size_t tamanho() const {
         return elementos.size();

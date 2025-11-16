@@ -22,8 +22,7 @@ private:
     static int proximoId;
 
     /**
-     * @brief Pega a data e hora atual formatada como string.
-     * @return String com a data e hora.
+     * Retorna data e hora atual formatada.
      */
     std::string getDataAtual() {
         std::time_t t = std::time(nullptr);
@@ -38,13 +37,12 @@ public:
     MovimentoEstoque(TipoMovimento tipo, int qtd, int idItem, const std::string& nomeItem);
 
     /**
-     * @brief Construtor para carregamento do arquivo.
+     * Construtor para carregamento de arquivo.
      */
     MovimentoEstoque(int id, const std::string& data, TipoMovimento tipo, int qtd, int idItem, const std::string& nomeItem);
 
     /**
-     * @brief Gera um resumo em string da movimentação.
-     * @return String com o resumo.
+     * Gera um resumo em string da movimentação.
      */
     std::string gerarResumo() const;
 

@@ -21,12 +21,12 @@ private:
 
 public:
     /**
-     * @brief Construtor. Tenta carregar os dados dos arquivos.
+     * Construtor (tenta carregar dados dos arquivos).
      */
     Estoque();
 
     /**
-     * @brief Destrutor. Salva os dados e libera a memória dos ponteiros.
+     * Destrutor (salva dados e libera memória).
      */
     ~Estoque();
 
